@@ -1,0 +1,44 @@
+#include<iostream>
+#include<cmath>
+using namespace std;
+
+// Function to find the smallest element in the subarray
+int smallest(int arr[], int start, int end)
+{
+    int index=start;
+    for(int j=start+1; j<end;j++){
+        if(arr[j]<arr[index])
+        index=j;
+    }
+    return index;
+}
+
+// Function to swap two elements in an array
+void swap(int &a, int &b) {
+    int temp = a;
+    a = b;
+    b = temp;
+}
+
+int main() {
+    int n=5; // Assuming n is the size of the array
+    int arr[n];
+    cout<<"Enter 5 array elements:"<<endl;
+    for (int i = 0; i < n; i++) {
+        cin >> arr[i];
+    }
+    for(int i=0;i<n-1;i++){
+        int smallindex=smallest(arr, i,n);
+        if(arr[i]>arr[smallindex]){
+            swap(arr[i],arr[smallindex]);
+        }
+    }
+
+    cout << "Sorted array: ";
+    for (int i = 0; i < n; i++) {
+        cout << arr[i] << " ";€
+    }
+    cout << endl;
+
+    return 0;
+}
